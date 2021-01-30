@@ -469,6 +469,60 @@ function formatCoords(...values) {
 
 function mimeFromFilename(filename) {
   // Replace this comment with your code...
+  var type = `application/octet-stream`;
+  var index = filename.lastIndexOf('.');
+  if (index < 0)
+    return type;
+
+  var ext = filename.substring(index + 1);
+  switch (ext) {
+    case 'html':
+    case 'htm':
+      type = 'text/html';
+      break;
+    case 'css':
+      type = 'text/css';
+      break;
+    case 'js':
+      type = 'text/javascript';
+      break;
+    case 'jpg':
+    case 'jpeg':
+      type = 'image/jpeg';
+      break;
+    case 'gif':
+      type = 'image/gif';
+      break;
+    case 'bmp':
+      type = 'image/bmp';
+      break;
+    case 'ico':
+    case 'cur':
+      type = 'image/x-icon';
+      break;
+    case 'png':
+      type = 'image/png';
+      break;
+    case 'svg':
+      type = 'image/svg+xml';
+      break;
+    case 'webp':
+      type = 'image/webp';
+      break;
+    case 'wav':
+    case 'mp3':
+      type = 'audio/' + ext;
+      break;
+    case 'mp4':
+    case 'webm':
+      type = 'video/' + ext;
+      break;
+    case 'json':
+      type = 'application/' + ext;
+      break;
+  }
+
+  return type;
 }
 
 /*******************************************************************************
