@@ -751,8 +751,22 @@ function none() {
  ******************************************************************************/
 
 function buildUrl(q, perPage, order, license, lat, lng) {
+  if (validateCoord(lat, lng) === false)
+    throw new Error('Invalid Coord');
+
+  var license_list = ['none', 'any', 'cc-by', 'cc-by-nc', 'cc-by-sa', 'cc-by-nd', 'cc-by-nc-sa', 'cc-by-nc-nd'];
+  if (license_list.includes(license) === false)
+    throw new Error('Invalid License');
+
+  var order_list = ['asc', 'desc'];
+  if (order_list.includes(order) === false)
+    throw new Error('Invalid Order');
+
+  if (perPage < 1 || perPage > 200)
+    throw new Error('Invalid Per Page');
+
   // Replace this comment with your code...
-  var url = "https://api.inaturalist.org/v1/observations?q=" + q + "&perPage=" + perPage + "&order=" + order + "&license=" + license + "&lat=" + lat + "&lat=" + lng;
+  var url = "https://api.inaturalist.org/v1/observations?q=" + q + "&per_page=" + perPage + "&order=" + order + "&license=" + license + "&lat=" + lat + "&lng=" + lng;
   return url;
 }
 
