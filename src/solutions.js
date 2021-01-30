@@ -205,6 +205,14 @@ function kebab(value) {
 
 function createImg(src, alt, width) {
   // Replace this comment with your code...
+  width = parseInt(width);
+  var width_str = "";
+  if (width > 0)
+    width_str = ` width="${width}"`;
+
+  alt = alt.trim();
+  src = src.trim();
+  return `<img src="${src}" alt="${alt}"${width_str}>`;
 }
 
 /*******************************************************************************
@@ -245,6 +253,23 @@ function createImg(src, alt, width) {
 
 function parseDateString(value) {
   // Replace this comment with your code...
+  var list = value.split("-");
+
+  var year = parseInt(list[0]);
+  var month = parseInt(list[2] - 1);
+  var day = parseInt(list[1]);
+  if (list.length !== 3)
+    throw new Error();
+  if (list[0].length !== 4)
+    throw new Error();
+
+  if (list[1].length !== 2)
+    throw new Error();
+
+  if (list[2].length !== 2)
+    throw new Error();
+
+  return new Date(year, month, day);
 }
 
 /*******************************************************************************
