@@ -296,6 +296,16 @@ function parseDateString(value) {
 
 function toDateString(value) {
   // Replace this comment with your code...
+  var year = value.getFullYear();
+  var month = (value.getMonth() + 1) + '';
+  var day = value.getDate() + '';
+  if (month.length < 2)
+    month = '0' + month;
+  if (day.length < 2)
+    day = '0' + day;
+
+  return [year, day, month].join('-');
+
 }
 
 /*******************************************************************************
