@@ -105,7 +105,7 @@
  ******************************************************************************/
 
 function greeting(name) {
-  return `Hello ${name}`;
+  return `Hello ${name}!`;
 }
 
 /*******************************************************************************
@@ -132,6 +132,17 @@ function greeting(name) {
 
 function kebab(value) {
   // Replace this comment with your code...
+  value = value.toUpperCase();
+  value = value.trim();
+
+  value = value.replace(/[. \t]/gi, "-");
+  var len = value.length;
+  for (var i = 0; i < len; i++) {
+    value = value.replace('--', '-');
+  }
+
+
+  return value;
 }
 
 /*******************************************************************************
