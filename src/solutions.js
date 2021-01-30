@@ -617,7 +617,26 @@ function generateLicenseLink(licenseCode) {
  ******************************************************************************/
 
 function pureBool(value) {
-  // Replace this comment with your code...
+  // Replace this comment with your code...  
+  if (value === undefined || value === null)
+    return false;
+
+  var type = typeof value;
+  if (type === 'boolean')
+    return value;
+
+  if (type === 'number')
+    return value > 0;
+
+  if (type === 'string') {
+    value = value.toLowerCase();
+    if (value === 'yes' || value === 'true' || value === 'y')
+      return true;
+    if (value === 'no' || value === 'false' || value === 'n' || value === 'f')
+      return false;
+  }
+
+  return true;
 }
 
 /*******************************************************************************
@@ -640,10 +659,30 @@ function pureBool(value) {
 
 function all() {
   // Replace this comment with your code...
+  var i = 0;
+  var flag = true;
+  for (i = 0; i < arguments.length; i++) {
+    if (pureBool(arguments[i]) === false) {
+      flag = false;
+      break;
+    }
+  }
+
+  return flag;
 }
 
 function none() {
   // Replace this comment with your code...
+  var i = 0;
+  var flag = true;
+  for (i = 0; i < arguments.length; i++) {
+    if (pureBool(arguments[i]) === true) {
+      flag = false;
+      break;
+    }
+  }
+
+  return flag;
 }
 
 /*******************************************************************************
