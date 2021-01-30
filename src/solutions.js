@@ -571,6 +571,30 @@ function mimeFromFilename(filename) {
 
 function generateLicenseLink(licenseCode) {
   // Replace this comment with your code...
+  var url = '<a href="https://choosealicense.com/no-permission/">All Rights Reserved</a>';
+
+  switch (licenseCode) {
+    case 'CC-BY':
+      url = '<a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</a>';
+      break;
+    case 'CC-BY-NC':
+      url = '<a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial License</a>';
+      break;
+    case 'CC-BY-SA':
+      url = '<a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike License</a>';
+      break;
+    case 'CC-BY-ND':
+      url = '<a href="https://creativecommons.org/licenses/by-nd/4.0/">Creative Commons Attribution-NoDerivs License</a>';
+      break;
+    case 'CC-BY-NC-SA':
+      url = '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike License</a>';
+      break;
+    case 'CC-BY-NC-ND':
+      url = '<a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/\">Creative Commons Attribution-NonCommercial-NoDerivs License</a>';
+      break;
+  }
+
+  return url;
 }
 
 /*******************************************************************************
