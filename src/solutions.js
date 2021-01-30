@@ -372,6 +372,13 @@ function validateCoord(lat, lng) {
 
 function formatCoord(lat, lng, includeBrackets) {
   // Replace this comment with your code...
+  if (validateCoord(lat, lng) === false)
+    throw new Error("Invalid Coord");
+
+  if (includeBrackets)
+    return `[${lat},${lng}]`;
+
+  return `${lat},${lng}`;
 }
 
 /*******************************************************************************
@@ -400,6 +407,18 @@ function formatCoord(lat, lng, includeBrackets) {
 
 function formatCoords(...values) {
   // Replace this comment with your code...
+  if (values.length % 2 !== 0)
+    throw new Error('invalid lat lng array');
+
+  var i = 0;
+  var list = [];
+  for (i = 0; i < values.length; i += 2) {
+    if (validateCoord(values[i], values[i + 1]) === false)
+      throw new Error('invalid lat lng array');
+    list.push(formatCoord(values[i], values[i + 1], true));
+  }
+
+  return '[' + list.join(', ') + ']';
 }
 
 /*******************************************************************************
